@@ -1,4 +1,4 @@
-package org.swatiradia;
+package PageObjects;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -22,9 +22,11 @@ public class StandAloneTest {
         String productName ="ZARA COAT 3";
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
+        LandingPage landingPage = new LandingPage(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://rahulshettyacademy.com/client");
+
         driver.findElement(By.id("userEmail")).sendKeys("swati@radia.com");
         driver.findElement(By.id("userPassword")).sendKeys("Swati@radia1");
         driver.findElement(By.id("login")).click();
@@ -51,6 +53,7 @@ public class StandAloneTest {
         driver.findElement(By.cssSelector(".totalRow button")).click();
         Actions a = new Actions(driver);
         a.sendKeys(driver.findElement(By.className("form-group")), "india").build().perform();
+
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ta-results")));
 
