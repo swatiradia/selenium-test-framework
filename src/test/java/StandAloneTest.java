@@ -1,6 +1,4 @@
-package PageObjects;
-
-
+import PageObjects.LandingPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
@@ -22,7 +20,6 @@ public class StandAloneTest {
         String productName ="ZARA COAT 3";
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
-        LandingPage landingPage = new LandingPage(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://rahulshettyacademy.com/client");
