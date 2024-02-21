@@ -12,6 +12,8 @@ import java.util.List;
 public class ProductCatalogue extends AbstractComponents {
 
     WebDriver driver;
+
+//    constructor
     public ProductCatalogue(WebDriver driver){
         super(driver);
         this.driver = driver;
@@ -20,9 +22,6 @@ public class ProductCatalogue extends AbstractComponents {
 
     @FindBy (css = "col-lg-4")
     List<WebElement> products;
-
-    @FindBy (css = "[routerlink*='cart']")
-            WebElement Cart;
 
     @FindBy (css = ".ng-animation" )
             WebElement spinner;
@@ -50,7 +49,5 @@ public class ProductCatalogue extends AbstractComponents {
         waitForElementToDisappear(spinner);
     }
 
-    public void clickOnCart(){
-        Cart.click();
-    }
+
 }

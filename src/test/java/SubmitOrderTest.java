@@ -1,5 +1,4 @@
-import PageObjects.LandingPage;
-import PageObjects.ProductCatalogue;
+import PageObjects.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
@@ -19,9 +18,12 @@ public class SubmitOrderTest {
     public static void main(String[] args) {
 
         String productName ="ZARA COAT 3";
+        String county = "india";
+
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
@@ -29,36 +31,29 @@ public class SubmitOrderTest {
 
         LandingPage landingPage = new LandingPage(driver);
         landingPage.GoToPage();
-        landingPage.loginApplication("swati@radia.com", "Swati@radia1");
+        ProductCatalogue productCatalogue = landingPage.loginApplication("swati@radia.com", "Swati@radia1");
 
 /*        All the actions happening in Product Catalogue Page */
 
-        ProductCatalogue productCatalogue = new ProductCatalogue(driver);
-        List<WebElement> products = productCatalogue.getProductList();
+        productCatalogue.getProductList();
         productCatalogue.addProductToCart(productName);
-        productCatalogue.clickOnCart();
+        CartPage cartPage = productCatalogue.goToCartPage();
 
+/*        All the actions happening in Product Catalogue Page */
 
-        List<WebElement> productInCart = driver.findElements(By.xpath("//*[@class='cartSection']/h3"));
-
-        Boolean match = productInCart.stream().anyMatch(cartProduct -> cartProduct.getText().equalsIgnoreCase(productName));
+        boolean match = cartPage.verifyProductDisplayed(productName);
         Assert.assertTrue(match);
+        CheckoutPage checkoutPage = cartPage.goToCheckout();
 
+/*        All the actions happening in Checkout Page */
 
-        driver.findElement(By.cssSelector(".totalRow button")).click();
-        Actions a = new Actions(driver);
-        a.sendKeys(driver.findElement(By.className("form-group")), "india").build().perform();
+         checkoutPage.selectingTheCountry(county);
+        ConfirmationPage confirmationPage = checkoutPage.submitOrder();
 
+/*        All the actions happening in Confirmation  Page */
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ta-results")));
-
-        driver.findElement(By.cssSelector(".ta-item:nth-of-type(2)")).click();
-        driver.findElement(By.cssSelector(".action__submit")).click();
-
-        String confirmMessage = driver.findElement(By.cssSelector(".hero-primary")).getText();
+        String confirmMessage = confirmationPage.getConfirmationText();
         Assert.assertTrue(confirmMessage.equalsIgnoreCase("Thankyou for the order."));
-
-
-
+        driver.close();
     }
 }

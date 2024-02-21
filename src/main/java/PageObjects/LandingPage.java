@@ -1,7 +1,6 @@
 package PageObjects;
 
 import AbstractComponents.AbstractComponents;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +10,7 @@ public class LandingPage extends AbstractComponents {
 
     WebDriver driver;
 
+    //    constructor
     public  LandingPage(WebDriver driver){
         super(driver);
         this.driver = driver;
@@ -25,11 +25,15 @@ public class LandingPage extends AbstractComponents {
         driver.get("https://rahulshettyacademy.com/client");
 
     }
-    public void loginApplication(String email, String password){
-
+    public ProductCatalogue loginApplication(String email, String password){
         userEmail.sendKeys(email);
         userPassword.sendKeys(password);
         submit.click();
+
+/*    Creating an object for ProductCatalogue page and returning it*/
+
+        ProductCatalogue productCatalogue = new ProductCatalogue(driver);
+        return productCatalogue;
     }
 
 }
