@@ -20,17 +20,15 @@ public class CheckoutPage extends AbstractComponents {
 
     @FindBy (className = "form-group")
     WebElement country;
-
     @FindBy (css = ".ta-item:nth-of-type(2)")
     WebElement selectCountry;
-
     By countryResults = By.cssSelector(".ta-results");
 
     @FindBy (css = ".action__submit")
     WebElement submitButton;
-    public void selectingTheCountry(String country){
+    public void selectingTheCountry(String countryName){
         Actions a = new Actions(driver);
-        a.sendKeys(country, country).build().perform();
+        a.sendKeys(country, countryName).build().perform();
         waitForElementToAppear(countryResults);
         selectCountry.click();
     }

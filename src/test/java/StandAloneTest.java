@@ -18,7 +18,7 @@ public class StandAloneTest {
 
         String productName ="ZARA COAT 3";
 
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().clearDriverCache().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
@@ -69,6 +69,6 @@ public class StandAloneTest {
 
         String confirmMessage = driver.findElement(By.cssSelector(".hero-primary")).getText();
         Assert.assertTrue(confirmMessage.equalsIgnoreCase("Thankyou for the order."));
-        
+        driver.close();
     }
 }

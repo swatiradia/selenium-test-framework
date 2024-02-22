@@ -12,9 +12,9 @@ public class SubmitOrderTest {
     public static void main(String[] args) {
 
         String productName ="ZARA COAT 3";
-        String county = "india";
+        String countryName = "india";
 
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().clearDriverCache().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
@@ -40,10 +40,10 @@ public class SubmitOrderTest {
 
 /*        All the actions happening in Checkout Page */
 
-         checkoutPage.selectingTheCountry(county);
+        checkoutPage.selectingTheCountry(countryName);
         ConfirmationPage confirmationPage = checkoutPage.submitOrder();
 
-/*        All the actions happening in Confirmation  Page */
+/*        All the actions happening in ConfirmationPage */
 
         String confirmMessage = confirmationPage.getConfirmationText();
         Assert.assertTrue(confirmMessage.equalsIgnoreCase("Thankyou for the order."));

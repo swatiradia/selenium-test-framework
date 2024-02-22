@@ -26,13 +26,14 @@ public class ProductCatalogue extends AbstractComponents {
     @FindBy (css = ".ng-animation" )
             WebElement spinner;
 
-    By productsBy = By.cssSelector("col-lg-4");
+    By productsBy = By.cssSelector(".col-lg-4");
     By addToCartBy = By.cssSelector(".card-body button:last-of-type");
     By toastMessage = By.id("toast-container");
 
 
     public List<WebElement> getProductList(){
-        waitForElementToAppear((productsBy));
+        waitForElementToAppear(productsBy);
+        List<WebElement> products = driver.findElements(productsBy);
         return products;
     }
 
