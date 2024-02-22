@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Error Handling Tests">
+<suite name="Purchase Order Test">
     <groups>
         <run>
-            <include name="ErrorHandlingTest"/>
+            <include name="Purchase"/>
         </run>
     </groups>
     <test thread-count="5" name="SubmitOrderTest">
