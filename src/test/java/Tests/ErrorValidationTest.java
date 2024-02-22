@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class ErrorValidationTest extends BaseTest {
 
-    @Test
+    @Test (groups = {"ErrorHandlingTest"})
     public void loginErrorValidationTest(){
 
         ProductCatalogue productCatalogue = landingPage.loginApplication("swar@adia.com", "Swat000ia1");

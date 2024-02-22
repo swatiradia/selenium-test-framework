@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="All Test Suite">
+    <test thread-count="5" name="SubmitOrderTest">
+        <classes>
+            <class name="Tests.SubmitOrderTest">
+                <methods>
+                    <include name="submitOrderTest"/>
+                    <include name="orderHistoryTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test thread-count="5" name="ErrorValidationTes">
+        <classes>
+            <class name="Tests.ErrorValidationTest">
+                <methods>
+                    <include name="loginErrorValidationTest"/>
+                    <include name="productNameErrorValidationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
