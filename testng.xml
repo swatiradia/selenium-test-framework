@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="/Users/SwatiMihirRadia/IdeaProjects/selenium-test-framework">
+        <classes>
+            <class name="Tests.ErrorValidationTest">
+                <methods>
+                    <include name="LoginErrorValidationTest"/>
+                    <include name="ProductNameErrorValidationTest"/>
+                </methods>
+            </class>
+                <class name="Tests.SubmitOrderTest">
+                    <methods>
+                        <include name="SubmitOrderTest"/>
+                    </methods>
+                </class>
+        </classes>
+    </test>
+</suite>

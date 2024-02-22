@@ -10,7 +10,7 @@ import java.io.IOException;
 public class SubmitOrderTest extends BaseTest {
 
     @Test
-        public void SubmitOrder() throws IOException {
+        public void SubmitOrderTest() throws IOException {
 
         String productName ="ZARA COAT 3";
         String countryName = "india";
