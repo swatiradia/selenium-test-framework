@@ -36,7 +36,7 @@ public class CheckoutPage extends AbstractComponents {
     public ConfirmationPage submitOrder(){
         submitButton.click();
 
-/*    Creating an object for ConfirmationPage and returning it */
+/*  Creating an object for ConfirmationPage and returning it */
 
         ConfirmationPage confirmationPage = new ConfirmationPage(driver);
         return confirmationPage;
