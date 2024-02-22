@@ -11,14 +11,14 @@ import java.io.IOException;
 public class ErrorValidationTest extends BaseTest {
 
     @Test
-    public void LoginErrorValidationTest(){
+    public void loginErrorValidationTest(){
 
         ProductCatalogue productCatalogue = landingPage.loginApplication("swar@adia.com", "Swat000ia1");
         Assert.assertEquals(landingPage.getErrorMessage(), "Incorrect email or password.");
     }
 
     @Test
-    public void ProductNameErrorValidationTest() throws IOException {
+    public void productNameErrorValidationTest() throws IOException {
 
         String productName ="ZARA COAT 3";
 
