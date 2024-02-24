@@ -1,9 +1,14 @@
 package Tests;
 import PageObjects.*;
 import TestComponents.BaseTest;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -49,6 +54,16 @@ public class SubmitOrderTest extends BaseTest {
         ProductCatalogue productCatalogue = landingPage.loginApplication("swati@radia.com", "Swati@radia1");
         OrderPage orderPage = productCatalogue.goToOrdersPage();
         Assert.assertTrue(orderPage.verifyOrderDetails("ZARA COAT 3"));
+
+    }
+
+//    Method to take screenshot when a test fails and save the file in the destinationFile location
+    public File getScreenshot(String testCaseName) throws IOException {
+        TakesScreenshot takesScreenshot = (TakesScreenshot)driver;
+        File screenShotFile = takesScreenshot.getScreenshotAs(OutputType.FILE );
+        File destinationFile = new File(System.getProperty("user.dir")+"/reports/screenshots" + testCaseName + ".png");
+        FileUtils.copyFile(screenShotFile, destinationFile);
+        return destinationFile;
 
     }
 
