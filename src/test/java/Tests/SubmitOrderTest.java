@@ -58,15 +58,6 @@ public class SubmitOrderTest extends BaseTest {
 
     }
 
-    //    Method to take screenshot when a test fails and save the file in the destinationFile location
-    public File getScreenshot(String testCaseName) throws IOException {
-        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
-        File screenShotFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        File destinationFile = new File(System.getProperty("user.dir") + "/reports/screenshots" + testCaseName + ".png");
-        FileUtils.copyFile(screenShotFile, destinationFile);
-        return destinationFile;
-
-    }
 
     @DataProvider
     public Object[][] getData() throws IOException {

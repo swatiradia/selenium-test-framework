@@ -6,12 +6,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -53,6 +54,7 @@ public class BaseTest extends DataReader {
         return driver;
     }
 
+
     public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException {
 //        read json to string, StandardCharsets.UTF_8 is encoding format
         String JsonContent = FileUtils.readFileToString
@@ -66,6 +68,14 @@ public class BaseTest extends DataReader {
 
     }
 
+    //    Method to take screenshot when a test fails and save the file in the destinationFile location
+    public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
+        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+        File screenShotFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
+        File destinationFile = new File(System.getProperty("user.dir") + "/reports/screenshots/" + testCaseName + ".png");
+        FileUtils.copyFile(screenShotFile, destinationFile);
+        return System.getProperty("user.dir") + "/reports/screenshots/" + testCaseName + ".png";
+    }
 
     @BeforeMethod(alwaysRun = true)
     public LandingPage launchApplication() throws IOException {

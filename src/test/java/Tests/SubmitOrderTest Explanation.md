@@ -1,4 +1,4 @@
-/* Submit Order Test - Explanation */
+**Submit Order Test - Explanation** 
 
 1. The test simulates the process of placing an order form beginning to the end.
 2. All the element locator pertaining to every webpage is stored in its respective Page Object class.
@@ -19,22 +19,22 @@
     it to the driver object of its own class.
 13. Add initializes all the element location using the iniElement method of the PageFactory class.
 
-/* AbstractComponents Class - Explanation */
+**AbstractComponents Class - Explanation**
 
 1. It has the element locators of all the generic components that appear on the Website like
    i. Home Page
    ii. Orders Page
    iii. Cart Page
 2. Also has method that implements the action to load those generic pages.
-3. Also has method to implement ExplicitWaits for element to be appear and to disappear.
+3. Also has method to implement ExplicitWaits for element to  appear and to disappear.
 
-/* Global properties file under Resource Package - Explanation */
+**Global properties file under Resource Package - Explanation**
 
 1. This holds data regarding the browser. Changing browser here can help run tests on different version.
 2. The BaseTest class inherits AbstractComponents Class , the driverInitializer method take the data from Global
    properties file to change the browser.
 
-/* BaseTest Class - Explanation */
+**BaseTest Class - Explanation**
 
 1. Run all the base method to get the test started like , initializes the driver and opens the browser.
 2. Has the methods with @BeforeMethod annotation for driverInitializer method.
@@ -42,6 +42,24 @@
 4. Launched the website and logins in into it using userEmail and Password.
 5. Lastly has a method to take screenshot of the website when the test fails to send the file to reports.
 
-/* testSuites Package - Explanation */
+**testSuites Package - Explanation**
 
 1. The package as many TestNg xml file to run specific tests based on the groups and execution type (parallel).
+
+**reports Package - Explanation**
+
+1. This package has a index.html file to see the Extent Report based on the test execution.
+2. Screenshot folder holder the screenshot of test fails.
+3. Extent report is implemented by adding the dependency in the pom.xml.
+4. A class is created under Resources package called ExtentReportNG to initialize extent report.
+5. The object of Class ExtentSparkReport is created to set the path of index.html file.
+6. As well as set configurations like Document Name, report name etc.
+7. Then initialize and assigned ExtentReport object with different configuration, and returned the same object.
+
+**Listener Class - Explanation**
+
+1. This class is under the TestComponents Package.
+2. The class implements ITestListener interface.
+3. Here , Extent object is created and all the functions are performed based on the test execution.
+4. And adding the Listener tag in testng.xml to include the extent report functionality to run tests.
+5. To solve the incorrect reporting on test result on parallel execution ThreadLocal object is used.
