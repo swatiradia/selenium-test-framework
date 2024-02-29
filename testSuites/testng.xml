@@ -11,7 +11,7 @@
             <class name="Tests.SubmitOrderTest"/>
         </classes>
     </test>
-    <test thread-count="5" name="ErrorValidationTes">
+    <test thread-count="5" name="ErrorValidationTest">
         <classes>
             <class name="Tests.ErrorValidationTest"/>
         </classes>

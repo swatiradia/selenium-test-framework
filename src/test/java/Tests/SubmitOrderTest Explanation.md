@@ -63,3 +63,9 @@
 3. Here , Extent object is created and all the functions are performed based on the test execution.
 4. And adding the Listener tag in testng.xml to include the extent report functionality to run tests.
 5. To solve the incorrect reporting on test result on parallel execution ThreadLocal object is used.
+
+**RetryFailedTest Class - Explanation**
+
+1. to be able to run flaky test one more time to be sure of the error, RetryFailedTest class in implement.
+2. The class implements IRetryListener interface and check if the count is less than maxTry, if it is, runs the test again.
+3. The attribute retryAnalyser is add to the @Test annotation above the flaky test, to be able to run again.

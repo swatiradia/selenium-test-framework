@@ -3,6 +3,7 @@ package Tests;
 import PageObjects.CartPage;
 import PageObjects.ProductCatalogue;
 import TestComponents.BaseTest;
+import TestComponents.RetryFailedTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,7 +11,7 @@ import java.io.IOException;
 
 public class ErrorValidationTest extends BaseTest {
 
-    @Test (groups = {"ErrorHandlingTest"})
+    @Test (groups = {"ErrorHandlingTest"}, retryAnalyzer = RetryFailedTest.class)
     public void loginErrorValidationTest(){
 
         ProductCatalogue productCatalogue = landingPage.loginApplication("swar@radia.com", "Swat000ia1");
