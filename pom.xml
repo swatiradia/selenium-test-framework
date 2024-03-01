@@ -66,7 +66,7 @@
             <version>5.1.1</version>
         </dependency>
 
-<<<<<<< Updated upstream
+
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -81,8 +81,6 @@
             <version>7.15.0</version>
         </dependency>
 
-=======
->>>>>>> Stashed changes
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
