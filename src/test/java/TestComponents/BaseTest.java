@@ -40,21 +40,10 @@ public class BaseTest extends DataReader {
 
         FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir")+"/src/main/java/Resources/GlobalData.properties");
         prop.load(fileInputStream);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
 
 
         String browserName = System.getProperty("browser")!= null ? System.getProperty("browser") : prop.getProperty("browser");
->>>>>>> Stashed changes
 
-
-        String browserName = System.getProperty("browser")!= null ? System.getProperty("browser") : prop.getProperty("browser");
->>>>>>> Stashed changes
-
-
-        String browserName = System.getProperty("browser")!= null ? System.getProperty("browser") : prop.getProperty("browser");
 
         if (browserName.contains("chrome")){ /*      To run the test in Chrome  */
 
