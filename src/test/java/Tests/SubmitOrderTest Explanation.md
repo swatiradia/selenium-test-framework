@@ -68,4 +68,13 @@
 
 1. to be able to run flaky test one more time to be sure of the error, RetryFailedTest class in implement.
 2. The class implements IRetryListener interface and check if the count is less than maxTry, if it is, runs the test again.
-3. The attribute retryAnalyser is add to the @Test annotation above the flaky test, to be able to run again.
+3. The attribute retryAnalyser is added to the @Test annotation above the flaky test, to be able to run again.
+
+**To run test from command line - Explanation**
+
+1. maven has to be installed and env variable has to be set and well as the org.apache.maven.plugins 
+   dependency should be added in pom.xml file.
+2. created profiles in pom.xml file for different testng.xml file, to be able to run these files from cmd prompt.
+3. use mvn -test -P(profile name) to run the test.
+4. Also changed the code in BaseTest class file to dynamically accept browser type to run the tests
+  cmd to run mvn test -P(profile name) -DFirefox
