@@ -1,6 +1,9 @@
 @tag
   Feature: Purchase any item and place order on E-commerce site
 
+    Background:
+      Given I landed on the Ecommerce page
+
     Scenario Outline: Place an order and complete the transaction
 
       Given I logged in with <email> and <password>
