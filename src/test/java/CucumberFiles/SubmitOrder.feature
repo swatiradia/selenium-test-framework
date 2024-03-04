@@ -4,12 +4,13 @@
     Background:
       Given I landed on the Ecommerce page
 
+    @Regression
     Scenario Outline: Place an order and complete the transaction
 
       Given I logged in with <email> and <password>
       When I add the <productName> to the cart
       And I checkout with <productName>
-      Then I see <confirmationMessage> is displayed
+      Then I see confirmation message <confirmationMessage> is displayed
 
       Examples:
         | email           | password     | productName     | confirmationMessage     |

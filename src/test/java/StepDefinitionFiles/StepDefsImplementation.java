@@ -44,11 +44,27 @@ public class StepDefsImplementation extends BaseTest {
         confirmationPage = checkoutPage.submitOrder();
     }
 
-    @Then("I see {} is displayed")
-    public void iSeeIsDisplayed(String confirmationMessage) {
+    @Then("I see confirmation message {} is displayed")
+    public void iSeeConfirmationMessageIsDisplayed(String confirmationMessage) {
 
         String confirmMessage = confirmationPage.getConfirmationText();
         Assert.assertTrue(confirmMessage.equalsIgnoreCase(confirmationMessage));
+        closeBrowser();
+    }
+
+    @Then("I see error message {} is displayed")
+    public void iSeeErrorMessageIsDisplayed(String errorMessage) {
+        Assert.assertEquals(landingPage.getErrorMessage(), errorMessage);
+        closeBrowser();
+
+    }
+
+    @Then("I see the error validation")
+    public void iSeeTheErrorValidation() {
+
+        CartPage cartPage = productCatalogue.goToCartPage();
+        boolean match = cartPage.verifyProductDisplayed("ZARA COAT 12");
+        Assert.assertFalse(match);
         closeBrowser();
     }
 }
