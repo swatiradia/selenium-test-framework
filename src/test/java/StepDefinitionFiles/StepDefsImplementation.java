@@ -14,7 +14,6 @@ public class StepDefsImplementation extends BaseTest {
 
     public LandingPage landingPage;
     public ProductCatalogue productCatalogue;
-
     public ConfirmationPage confirmationPage;
 
     @Given("I landed on the Ecommerce page")
@@ -56,8 +55,8 @@ public class StepDefsImplementation extends BaseTest {
     public void iSeeErrorMessageIsDisplayed(String errorMessage) {
         Assert.assertEquals(landingPage.getErrorMessage(), errorMessage);
         closeBrowser();
-
     }
+
 
     @Then("I see the error validation")
     public void iSeeTheErrorValidation() {

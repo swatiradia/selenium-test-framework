@@ -2,7 +2,7 @@
 
 1. The test simulates the process of placing an order form beginning to the end.
 2. All the element locator pertaining to every webpage is stored in its respective Page Object class.
-3. The PageObject Classes are under main/java as they do not have have test data in them.
+3. The PageObject Classes are under main/java as they do not have test data in them.
 4. These classes are used to write test classes which are under test/java.
 5. The SubmitOrderTest begin with creating an object of ProductCatalogue page.
 6. The TestNG annotation BeforeMethod is used in the BaseTest Class that runs first.
@@ -48,7 +48,7 @@
 
 **reports Package - Explanation**
 
-1. This package has a index.html file to see the Extent Report based on the test execution.
+1. This package has an index.html file to see the Extent Report based on the test execution.
 2. Screenshot folder holder the screenshot of test fails.
 3. Extent report is implemented by adding the dependency in the pom.xml.
 4. A class is created under Resources package called ExtentReportNG to initialize extent report.
@@ -78,3 +78,36 @@
 3. use mvn -test -P(profile name) to run the test.
 4. Also changed the code in BaseTest class file to dynamically accept browser type to run the tests
   cmd to run mvn test -P(profile name) -DFirefox
+
+**Setting up jenkins - Explanation**
+
+1. Download jenkins , I downloaded using homebrew with the below commands
+   Sample commands:
+   Install the latest LTS version: **brew install jenkins-lts**
+   Start the Jenkins service: **brew services start jenkins-lts**
+   Restart the Jenkins service: **brew services restart jenkins-lts**
+   Update the Jenkins version: **brew upgrade jenkins-lts**
+2. Once the server starts hit the local server - **localhost:8080** to launch Jenkins
+3. Set up new project, I gave my gitHub repo to download code.
+4. Did the below configurations
+      Repository URL : https://github.com/swatiradia/selenium-test-framework.git
+      Branch Specifier : */main
+      Build Steps -> Invoke top-level Maven targets 
+        Maven Version : Maven 
+        Goals : test -P"$profile"  -Dbrowser="$browserName"
+      Choice Parameter - > Name : browserName
+      Choices : chrome
+                chromeheadless
+                firefox
+                edge
+      Choice Parameter - > Name : profile
+      Choices : Regression
+                Purchase
+                ErrorValidation
+                CucumberTests
+
+**Cucumber BDD Files - Explanation**
+
+1. Created a new package called CucumberFiles to add all the Feature files.
+2. Another package called StepDefinitionFiles for Step definition implementation files.
+3. Created TestNGTestRunner files to be able to run Cucumber files. More explanation is in the file comments.
